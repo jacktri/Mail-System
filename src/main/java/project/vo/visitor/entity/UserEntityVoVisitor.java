@@ -12,6 +12,7 @@ public class UserEntityVoVisitor extends BaseEntityVoVisitor<UserEntity, UserVo.
         super(builder);
     }
 
+    @Override
     public void visit(final UserEntity userEntity)
     {
         super.visit(userEntity);

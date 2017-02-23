@@ -5,6 +5,7 @@ import project.common.vo.utils.ValueObjectBuilder;
 
 public class UserVo implements ValueObject
 {
+    private Long id;
     private String login;
     private String email;
     private String firstName;
@@ -12,6 +13,7 @@ public class UserVo implements ValueObject
     private String password;
 
     public UserVo(Builder builder){
+        this.id = builder.id;
         this.login = builder.login;
         this.email = builder.email;
         this.firstName = builder.firstName;
@@ -35,6 +37,7 @@ public class UserVo implements ValueObject
 
     public static final class Builder implements ValueObjectBuilder<Builder>
     {
+        private Long id;
         private String login;
         private String email;
         private String firstName;
@@ -63,6 +66,13 @@ public class UserVo implements ValueObject
         }
         public UserVo build(){
             return new UserVo(this);
+        }
+
+        @Override
+        public Builder id(Long id)
+        {
+            this.id = id;
+            return this;
         }
     }
 }

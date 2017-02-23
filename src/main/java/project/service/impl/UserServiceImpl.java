@@ -24,23 +24,17 @@ public class UserServiceImpl implements UserService
     {
         List<UserEntity> entities = userRepository.findByUsername(username);
         UserVo userVo = convertEntityToVo(entities.get(0));
-
-        if (userVo.getLogin().equals("user"))
+        if (userVo.getLogin().equals(username))
             {
-            return new UserVo.Builder().login("user").password(new BCryptPasswordEncoder().encode("password")).build();
-            } else
-            {
-            return null;
+            return userVo;
             }
+        return null;
     }
 
     private List<UserVo> convertEntitiesToVos(final List<UserEntity> entities)
     {
         final List<UserVo> userVos = new ArrayList<>(entities.size());
-        entities.forEach(entity ->
-        {
-        userVos.add(convertEntityToVo(entity));
-        });
+        entities.forEach(entity -> userVos.add(convertEntityToVo(entity)));
         return userVos;
     }
 
@@ -67,6 +61,6 @@ public class UserServiceImpl implements UserService
     @Override
     public Boolean isCurrentUserLoggedIn()
     {
-        return null;
+        return true;
     }
 }

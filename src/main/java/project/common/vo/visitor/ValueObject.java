@@ -1,5 +1,7 @@
 package project.common.vo.visitor;
 
-public interface ValueObject
+import java.io.Serializable;
+
+public interface ValueObject extends Serializable
 {
 }

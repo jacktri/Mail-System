@@ -1,7 +1,7 @@
 package project.entity;
 
-import project.common.vo.Visitable;
 import project.common.BaseEntityVisitor;
+import project.common.vo.visitor.Visitable;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ public class UserEntity extends BaseEntity implements Visitable<UserEntity.UserE
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column
     private String username;
@@ -19,14 +19,14 @@ public class UserEntity extends BaseEntity implements Visitable<UserEntity.UserE
     @Column
     private String password;
 
-    public UserEntity()
-    {
-    }
-
     public UserEntity(String username, String password)
     {
         this.username = username;
         this.password = password;
+    }
+
+    public UserEntity()
+    {
     }
 
     public String getUsername()
@@ -38,7 +38,17 @@ public class UserEntity extends BaseEntity implements Visitable<UserEntity.UserE
     {
         return password;
     }
+    @Override
+    public Long getId()
+    {
+        return id;
+    }
 
+    @Override
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
     @Override
     public <T extends UserEntityVisitor> T accept(T visitor)
     {

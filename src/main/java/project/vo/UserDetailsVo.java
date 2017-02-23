@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserDetailsVo implements UserDetails, ValueObject
 {
-    private UserVo userVo;
+    private transient UserVo userVo;
     private List<GrantedAuthority> authorities;
 
     public UserDetailsVo(UserVo userVo, List<GrantedAuthority> authorities){
@@ -80,6 +80,12 @@ public class UserDetailsVo implements UserDetails, ValueObject
         }
         public UserDetailsVo build(){
             return new UserDetailsVo(this);
+        }
+
+        @Override
+        public Builder id(Long id)
+        {
+            return null;
         }
     }
 }

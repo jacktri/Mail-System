@@ -1,7 +1,6 @@
-package project.common.vo;
+package project.common.vo.visitor;
 
-import project.common.vo.visitor.Visitor;
-
+@FunctionalInterface
 public interface Visitable<V extends Visitor> {
     <T extends V> T accept(T visitor);
 }
