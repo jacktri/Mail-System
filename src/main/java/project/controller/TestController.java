@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SignInController
+public class TestController
 {
 
     @RequestMapping(value = "testing", method = RequestMethod.GET)

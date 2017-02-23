@@ -16,6 +16,6 @@ public class MyLogOutHandler implements LogoutHandler
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
     {
-        System.out.println("logging out");
+        // handle here
     }
 }
