@@ -1,7 +1,10 @@
 package project.entity;
 
 import project.common.BaseEntityVisitor;
+import project.common.vo.utils.EntityBuilder;
+import project.common.vo.visitor.ValueObject;
 import project.common.vo.visitor.Visitable;
+import project.vo.MessageVo;
 
 import javax.persistence.*;
 
@@ -23,6 +26,11 @@ public class UserEntity extends BaseEntity implements Visitable<UserEntity.UserE
     {
         this.username = username;
         this.password = password;
+    }
+
+    public UserEntity(Builder builder){
+        this.username = builder.username;
+        this.password = builder.password;
     }
 
     public UserEntity()
@@ -49,6 +57,36 @@ public class UserEntity extends BaseEntity implements Visitable<UserEntity.UserE
     {
         this.id = id;
     }
+
+    public static final class Builder implements EntityBuilder<Builder>
+    {
+
+        private Long id;
+        private String username;
+        private String password;
+
+        @Override
+        public Builder id(Long id)
+        {
+            this.id = id;
+            return this;
+        }
+
+        public Builder username(String username){
+            this.username = username;
+            return this;
+        }
+
+        public Builder password(String password){
+            this.password = password;
+            return this;
+        }
+
+        public UserEntity build(){
+            return new UserEntity(this);
+        }
+    }
+
     @Override
     public <T extends UserEntityVisitor> T accept(T visitor)
     {

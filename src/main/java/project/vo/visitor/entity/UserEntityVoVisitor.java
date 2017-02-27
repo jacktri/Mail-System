@@ -16,7 +16,7 @@ public class UserEntityVoVisitor extends BaseEntityVoVisitor<UserEntity, UserVo.
     public void visit(final UserEntity userEntity)
     {
         super.visit(userEntity);
-        builder.login(userEntity.getUsername());
-        builder.password(userEntity.getPassword());
+        builder.login(userEntity.getUsername())
+                .password(userEntity.getPassword());
     }
 }

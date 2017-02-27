@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserDetailsVo implements UserDetails, ValueObject
 {
-    private transient UserVo userVo;
+    private UserVo userVo;
     private List<GrantedAuthority> authorities;
 
     public UserDetailsVo(UserVo userVo, List<GrantedAuthority> authorities){

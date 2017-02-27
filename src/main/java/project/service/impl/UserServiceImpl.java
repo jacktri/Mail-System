@@ -1,12 +1,12 @@
 package project.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import project.entity.UserEntity;
 import project.repository.UserRepository;
 import project.service.UserService;
 import project.vo.UserVo;
+import project.vo.visitor.UserVoEntityVisitor;
 import project.vo.visitor.entity.UserEntityVoVisitor;
 
 import java.util.ArrayList;
@@ -42,6 +42,14 @@ public class UserServiceImpl implements UserService
     {
         return entity.accept(new UserEntityVoVisitor(
                 new UserVo.Builder()))
+                .getBuilder()
+                .build();
+    }
+
+    private UserEntity convertVoToEntity(final UserVo userVo)
+    {
+        return userVo.accept(new UserVoEntityVisitor(
+               new UserEntity.Builder()))
                 .getBuilder()
                 .build();
     }
