@@ -16,5 +16,4 @@ public interface MessageRepository extends JpaRepository<MessageEntity, Long>
     @Query("SELECT m FROM MessageEntity m")
     List<MessageEntity> getMessages();
 
-
 }

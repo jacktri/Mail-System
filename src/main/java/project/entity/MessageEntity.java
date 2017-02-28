@@ -12,13 +12,14 @@ import java.sql.Timestamp;
 public class MessageEntity extends BaseEntity implements Visitable<MessageEntity.MessageEntityVisitor>
 {
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private UserEntity owner;
 
-    @OneToOne
+    @ManyToOne
     private UserEntity sender;
 
     @Column
@@ -67,13 +68,13 @@ public class MessageEntity extends BaseEntity implements Visitable<MessageEntity
         return sendDateTime;
     }
 
-    @Override
+//    @Override
     public Long getId()
     {
         return id;
     }
 
-    @Override
+//    @Override
     public void setId(Long id)
     {
         this.id = id;
@@ -87,7 +88,7 @@ public class MessageEntity extends BaseEntity implements Visitable<MessageEntity
         private String content;
         private Timestamp sendDateTime;
 
-        @Override
+//        @Override
         public Builder id(Long id)
         {
             this.id = id;

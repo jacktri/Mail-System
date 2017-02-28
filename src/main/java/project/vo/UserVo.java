@@ -7,7 +7,6 @@ import project.common.vo.visitor.Visitable;
 
 public class UserVo extends BaseVo implements Visitable<UserVo.UserVoVisitor>
 {
-    private Long id;
     private String login;
     private String email;
     private String firstName;
@@ -15,7 +14,6 @@ public class UserVo extends BaseVo implements Visitable<UserVo.UserVoVisitor>
     private String password;
 
     public UserVo(Builder builder){
-        this.id = builder.id;
         this.login = builder.login;
         this.email = builder.email;
         this.firstName = builder.firstName;
@@ -35,11 +33,6 @@ public class UserVo extends BaseVo implements Visitable<UserVo.UserVoVisitor>
     public String getPassword()
     {
         return password;
-    }
-
-    public Long getId()
-    {
-        return id;
     }
 
     public String getEmail()
@@ -66,7 +59,6 @@ public class UserVo extends BaseVo implements Visitable<UserVo.UserVoVisitor>
 
     public static final class Builder implements ValueObjectBuilder<Builder>
     {
-        private Long id;
         private String login;
         private String email;
         private String firstName;
@@ -98,7 +90,6 @@ public class UserVo extends BaseVo implements Visitable<UserVo.UserVoVisitor>
         public String toString()
         {
             return "Builder{" +
-                    "id=" + id +
                     ", login='" + login + '\'' +
                     ", email='" + email + '\'' +
                     ", firstName='" + firstName + '\'' +
@@ -109,11 +100,11 @@ public class UserVo extends BaseVo implements Visitable<UserVo.UserVoVisitor>
         public UserVo build(){
             return new UserVo(this);
         }
+
         @Override
         public Builder id(Long id)
         {
-            this.id = id;
-            return this;
+            return null;
         }
     }
     public interface UserVoVisitor extends BaseVoVisitor<UserVo>{

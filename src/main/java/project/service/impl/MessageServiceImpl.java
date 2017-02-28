@@ -12,27 +12,26 @@ import project.vo.visitor.MessageVoEntityVisitor;
 import project.vo.visitor.UserVoEntityVisitor;
 import project.vo.visitor.entity.MessageEntityVoVisitor;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class MessageServiceImpl implements MessageService
 {
-
     @Autowired
     protected MessageRepository messageRepository;
 
     @Override
     public void sendMessage(MessageVo message)
     {
+        messageRepository.save(convertMessageVoToEntity(message));
 
     }
 
     @Override
     public List<MessageVo> getMessagesForUser(UserVo userVo)
     {
-//        List<MessageEntity> messageEntities = messageRepository.getMessages();
-
         List<MessageEntity> messageEntities = messageRepository.getMessagesForUser(userVo.getLogin());
         return convertMessageEntitiesToVo(messageEntities);
 

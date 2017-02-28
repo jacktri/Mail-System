@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService
         return null;
     }
 
+    @Override
+    public void registerUser(UserVo userVo){
+        userRepository.save(convertVoToEntity(userVo));
+    }
+
     private List<UserVo> convertEntitiesToVos(final List<UserEntity> entities)
     {
         final List<UserVo> userVos = new ArrayList<>(entities.size());

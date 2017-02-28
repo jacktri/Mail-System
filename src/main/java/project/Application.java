@@ -41,7 +41,10 @@ public class Application implements CommandLineRunner
         userRepository.save(user2);
         messageRepository.save(new MessageEntity(user1,user2,"test mesage", new Timestamp(1)));
         UserVo u = new UserVo.Builder().login("user1").build();
+        messageService.sendMessage(new MessageVo(new MessageVo.Builder().content("ffff").receiever(u).sender(u).sendDateTime(new Timestamp(1))));
         List<MessageVo> messages = messageService.getMessagesForUser(u);
+
         messages.forEach(message -> System.out.println(message.toString()));
+
     }
 }

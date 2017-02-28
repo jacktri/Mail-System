@@ -8,6 +8,8 @@ public interface UserService
 {
     UserVo getUserByUsername(String username);
 
+    void registerUser(UserVo userVo);
+
     List<String> getPermissions(String username);
 
     UserVo getCurrentUser();

@@ -12,10 +12,12 @@ import javax.persistence.*;
 @Table(name = "userentity")
 public class UserEntity extends BaseEntity implements Visitable<UserEntity.UserEntityVisitor>
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+//    @Id
+//    @Column(name = "ID")
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
 
+    @Id
     @Column
     private String username;
 
@@ -46,31 +48,31 @@ public class UserEntity extends BaseEntity implements Visitable<UserEntity.UserE
     {
         return password;
     }
-    @Override
-    public Long getId()
-    {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
+//    @Override
+//    public Long getId()
+//    {
+//        return id;
+//    }
+//
+//    @Override
+//    public void setId(Long id)
+//    {
+//        this.id = id;
+//    }
 
     public static final class Builder implements EntityBuilder<Builder>
     {
 
-        private Long id;
+//        private Long id;
         private String username;
         private String password;
 
-        @Override
-        public Builder id(Long id)
-        {
-            this.id = id;
-            return this;
-        }
+//        @Override
+//        public Builder id(Long id)
+//        {
+//            this.id = id;
+//            return this;
+//        }
 
         public Builder username(String username){
             this.username = username;

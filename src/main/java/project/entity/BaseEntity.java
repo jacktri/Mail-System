@@ -5,7 +5,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class BaseEntity
 {
-    public abstract Long getId();
-
-    public abstract void setId(Long id);
+//    public abstract Long getId();
+//
+//    public abstract void setId(Long id);
 }
